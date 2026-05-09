@@ -37,6 +37,54 @@
     .page {
       max-width: 1180px;
       margin: 0 auto 3rem auto;
+      padding-top: 0;
+    }
+
+    /* Mobile navigation */
+    .mobile-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: none;
+      gap: 0.5rem;
+      padding: 0.4rem 0.25rem 0.4rem;
+      margin-bottom: 0.4rem;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.92),
+        rgba(15,23,42,0.86),
+        transparent
+      );
+    }
+
+    .nav-btn {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.96);
+      color: #e5e7eb;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.5rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      gap: 0.25rem;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-btn span {
+      pointer-events: none;
+    }
+
+    .nav-btn:active {
+      transform: scale(0.97);
+      background: rgba(30,64,175,0.9);
+      border-color: rgba(56,189,248,0.8);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
     }
 
     /* Header */
@@ -248,7 +296,7 @@
       color: var(--muted);
     }
 
-    /* Print button */
+    /* Toolbar */
     .toolbar {
       display: flex;
       justify-content: flex-end;
@@ -268,7 +316,11 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, border-color 0.1s ease;
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease,
+        border-color 0.1s ease;
     }
 
     .btn-primary {
@@ -293,7 +345,7 @@
       font-size: 0.95rem;
     }
 
-    /* Layout grids */
+    /* Layout */
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
@@ -335,12 +387,13 @@
       color: var(--muted);
     }
 
-    /* Itinerary table */
+    /* Table */
     .table-wrapper {
       border-radius: 0.9rem;
       border: 1px solid rgba(31,41,55,0.85);
-      overflow: hidden;
+      overflow: auto;
       background: radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(15,23,42,1));
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -452,7 +505,7 @@
       font-weight: 500;
     }
 
-    /* Sidebar sections */
+    /* Sidebar */
     .info-section {
       margin-bottom: 0.85rem;
       padding-bottom: 0.75rem;
@@ -541,21 +594,72 @@
       color: #facc15;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 720px) {
       body {
-        padding: 0.9rem;
+        padding: 0.75rem;
+        padding-top: 0.25rem;
       }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .page {
+        padding-top: 0.1rem;
+      }
+
       .hero {
-        padding: 1.3rem 1.1rem 1.1rem;
+        padding: 1.1rem 1rem 1rem;
       }
+
+      .hero-top {
+        flex-direction: column;
+      }
+
       .hero-main {
         max-width: 100%;
       }
+
+      .hero-side {
+        max-width: 100%;
+        margin-top: 0.75rem;
+      }
+
       .layout {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-side {
-        max-width: 100%;
+
+      .card {
+        padding: 0.9rem 0.8rem 0.9rem;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+
+      .table-wrapper {
+        margin: 0 -0.8rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
+
+      table {
+        min-width: 640px;
+      }
+
+      th, td {
+        padding: 0.5rem 0.55rem;
+      }
+
+      .hero-badges {
+        gap: 0.4rem;
+      }
+
+      .badge {
+        font-size: 0.7rem;
       }
     }
 
@@ -564,10 +668,14 @@
         background: #ffffff;
         color: #000000;
       }
-      .hero, .card, .table-wrapper {
+      .hero,
+      .card,
+      .table-wrapper {
         box-shadow: none;
       }
-      .btn, .toolbar {
+      .btn,
+      .toolbar,
+      .mobile-nav {
         display: none !important;
       }
     }
@@ -575,8 +683,24 @@
 </head>
 <body>
   <div class="page">
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav">
+      <button class="nav-btn" data-target="#top">
+        <span>Overview</span>
+      </button>
+      <button class="nav-btn" data-target="#itinerary">
+        <span>Itinerary</span>
+      </button>
+      <button class="nav-btn" data-target="#hotels">
+        <span>Hotels</span>
+      </button>
+      <button class="nav-btn" data-target="#budget">
+        <span>Budget</span>
+      </button>
+    </nav>
+
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="hero-top">
         <div class="hero-main">
           <div class="trip-kicker">
@@ -585,22 +709,22 @@
           </div>
           <h1 class="hero-title">Hokkaido Family Trip · 17 Nov – 2 Dec 2026</h1>
           <p class="hero-sub">
-            3‑pax family trip (age 53, 50, 15) covering
-            <strong>Hakodate → Lake Toya → Noboribetsu → Chitose → Furano → Asahikawa → Mitsui Outlet → Sapporo → Otaru → Sapporo</strong>
-            with a one‑way self‑drive core and car‑free city days. [Itinerary based on planning notes]
+            3‑pax family trip covering
+            <strong>Hakodate → Lake Toya → Noboribetsu → Chitose → Furano → Asahikawa → Sapporo → Otaru → Sapporo</strong>
+            with an 8‑day self‑drive core and car‑free city days at the end.
           </p>
           <div class="hero-badges">
             <div class="badge badge-primary">
               <span class="icon">✈️</span>
-              <span>Flights: SIN ⇄ HKD / CTS · NH + SQ661 (CTS→SIN 09:30–17:05)</span>
+              <span>Flights: SIN ⇄ HKD / CTS · SQ + ANA · SQ661 CTS→SIN 09:30–17:05</span>
             </div>
             <div class="badge">
               <span class="icon">🚗</span>
-              <span>Car: 19–25 Nov · Hakodate Ekimae → Sapporo Ekimae · ¥86,052 (est.)</span>
+              <span>Car: 19–26 Nov · Hakodate → Sapporo (8 days, one‑way)</span>
             </div>
             <div class="badge">
               <span class="icon">🧮</span>
-              <span>Planned budget: ~SGD 7,900 for 3 pax</span>
+              <span>Planned budget: ~SGD 8,300 for 3 pax (excl. flights)</span>
             </div>
           </div>
         </div>
@@ -608,7 +732,7 @@
         <aside class="hero-side">
           <div class="hero-side-header">
             <h3>Trip Snapshot</h3>
-            <span>2026 · Winter Edge</span>
+            <span>2026 · Late Autumn</span>
           </div>
           <div class="hero-side-main">
             <div class="hero-trip-dates">17 Nov (Tue) – 2 Dec (Wed) 2026</div>
@@ -617,6 +741,7 @@
               <span>Hakodate</span>
               <span>Lake Toya</span>
               <span>Noboribetsu</span>
+              <span>Chitose</span>
               <span>Furano</span>
               <span>Asahikawa</span>
               <span>Sapporo</span>
@@ -624,15 +749,14 @@
             </div>
             <div class="hero-meta-row">
               <span>Driving days</span>
-              <span><strong>7D self‑drive (19–25 Nov)</strong></span>
+              <span><strong>8D self‑drive (19–26 Nov)</strong></span>
             </div>
             <div class="hero-meta-row">
               <span>Trip style</span>
-              <span>Scenic routes + onsen + outlets</span>
+              <span>Scenic drives, onsen & city time</span>
             </div>
             <p class="hero-footer-note">
-              Designed for easy navigation, built‑in snow buffer and
-              relaxed pacing for a family of three.
+              Built with snow buffer, scenic routes, and enough downtime for shopping and family rest.
             </p>
           </div>
         </aside>
@@ -650,15 +774,15 @@
     <!-- LAYOUT -->
     <section class="layout">
       <!-- MAIN: ITINERARY TABLE -->
-      <article class="card">
+      <article class="card" id="itinerary">
         <header class="card-header">
           <div>
             <div class="card-title"><strong>Daily Itinerary</strong> · 17 Nov – 2 Dec 2026</div>
-            <div class="card-sub">Includes hotel, transport, drive time and main plan for each day.</div>
+            <div class="card-sub">All hotels updated, with 3 nights in Asahikawa and car return on 26 Nov.</div>
           </div>
         </header>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper" role="region" aria-label="Hokkaido itinerary table" tabindex="0">
           <table>
             <thead>
               <tr>
@@ -675,16 +799,15 @@
                 <td class="col-date">17 Nov (Tue)</td>
                 <td class="col-base">Hakodate</td>
                 <td class="col-transport">
-                  Arrive HKD 18:15 (NH557 from HND 16:55). Airport taxi ~30 min to city.
+                  Arrive HKD 18:15 (ANA from HND, connected from SIN). Airport taxi ~30 min to city.
                   <div class="pill">✈️ Arrival Day</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">JR Inn Hakodate</span>
-                  <span class="note">2N total · Station‑side business hotel · Good value</span>
+                  <span class="name">Hotel Global View Hakodate</span>
+                  <span class="note">2N · Breakfast included for 3</span>
                 </td>
                 <td class="col-plan">
-                  <strong>Evening: Bay area warm‑up</strong><br/>
-                  Check‑in, short bay area walk, seafood dinner near Kanemori Red Brick Warehouses.
+                  Check‑in, short walk around station / bay area, seafood dinner nearby.
                 </td>
               </tr>
 
@@ -697,12 +820,11 @@
                   <div class="pill">🚶 City explore</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">JR Inn Hakodate</span>
-                  <span class="note">Second night</span>
+                  <span class="name">Hotel Global View Hakodate</span>
+                  <span class="note">2nd night · Breakfast included</span>
                 </td>
                 <td class="col-plan">
-                  Morning Market breakfast, Motomachi & churches, afternoon rest.
-                  <strong>Evening:</strong> Mt Hakodate ropeway for night view (weather‑dependent).
+                  Morning: Hakodate Morning Market. Afternoon: Goryokaku Tower & fort park. Evening: Mt Hakodate ropeway for night view (weather‑dependent).
                 </td>
               </tr>
 
@@ -711,16 +833,15 @@
                 <td class="col-date">19 Nov (Thu)</td>
                 <td class="col-base">Lake Toya</td>
                 <td class="col-transport">
-                  Pick up rental car 10:00 at Hakodate Ekimae. Drive to Lake Toya via scenic coastal route (~3–3.5 h normal; allow ~4 h with stops).
-                  <div class="pill drive">🚗 Start self‑drive</div>
+                  Check‑out by ~11:00. Pick up rental car in Hakodate late morning, then drive to Lake Toya (~3–3.5 h, allow ~4 h with stops).
+                  <div class="pill drive">🚗 Start self‑drive (Day 1/8)</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Lake View Toya Nonokaze Resort</span>
-                  <span class="note">1N · Onsen ryokan with lake view</span>
+                  <span class="name">Toyako Manseikaku Hotel Lakeside Terrace</span>
+                  <span class="note">1N · Buffet dinner & breakfast</span>
                 </td>
                 <td class="col-plan">
-                  Check‑out Hakodate after breakfast, collect car, drive to Lake Toya with lunch en route.<br/>
-                  <strong>Afternoon / evening:</strong> Onsen, lakeside stroll, possible lake fireworks if scheduled.
+                  Scenic drive from Hakodate to Lake Toya, lakeside stroll, onsen, and hotel buffet dinner.
                   <div class="pill onset">♨ Onsen stay</div>
                 </td>
               </tr>
@@ -730,16 +851,15 @@
                 <td class="col-date">20 Nov (Fri)</td>
                 <td class="col-base">Noboribetsu</td>
                 <td class="col-transport">
-                  Drive Lake Toya → Noboribetsu (~1 h). Short local driving around onsen town.
+                  Drive Lake Toya → Noboribetsu (~1 h). Short local driving in onsen town.
                   <div class="pill drive">🚗 Scenic drive</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Noboribetsu Grand Hotel</span>
-                  <span class="note">1N · Classic onsen ryokan</span>
+                  <span class="name">Daiichi Takimotokan</span>
+                  <span class="note">1N · Major onsen ryokan</span>
                 </td>
                 <td class="col-plan">
-                  Lake Toya morning stroll, then drive to Noboribetsu.
-                  Visit Jigokudani (Hell Valley) boardwalks, onsen street, evening kaiseki and hot spring.
+                  Visit Jigokudani (Hell Valley), stroll the onsen street, enjoy Takimotokan’s large hot spring facilities and meals.
                   <div class="pill onset">♨ Onsen stay</div>
                 </td>
               </tr>
@@ -747,18 +867,17 @@
               <!-- 21 Nov -->
               <tr>
                 <td class="col-date">21 Nov (Sat)</td>
-                <td class="col-base">Chitose</td>
+                <td class="col-base">Chitose area</td>
                 <td class="col-transport">
-                  Scenic drive Noboribetsu → Lake Shikotsu via Route 453 → Chitose area (~2.5–3 h with stops).
+                  Drive Noboribetsu → Lake Shikotsu via Route 453 → Chitose / Minami‑Chitose (~2.5–3 h with scenic stops).
                   <div class="pill drive">🚗 Route 453 scenic</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">JR Inn Chitose</span>
-                  <span class="note">1N · Convenient for next‑day drive</span>
+                  <span class="name">Chitose business hotel (TBC)</span>
+                  <span class="note">e.g. JR Inn Chitose · 1N</span>
                 </td>
                 <td class="col-plan">
-                  Morning: Check out Noboribetsu, drive via Lake Shikotsu (Route 453) for lakeside scenery and lunch.<br/>
-                  Afternoon: Continue to Chitose / Minami‑Chitose, simple dinner near hotel.
+                  Morning: Depart Noboribetsu, stop at Lake Shikotsu for scenery and lunch. Afternoon: Continue to Chitose area, check‑in and simple dinner near station.
                 </td>
               </tr>
 
@@ -767,16 +886,15 @@
                 <td class="col-date">22 Nov (Sun)</td>
                 <td class="col-base">Furano</td>
                 <td class="col-transport">
-                  Drive Chitose → Furano (~2.5–3 h). Optional stop at rest area / viewpoint on the way.
+                  Drive Chitose → Furano (~2.5–3 h) with a rest/photo stop.
                   <div class="pill drive">🚗 Drive to Furano</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Furano Natulux Hotel</span>
-                  <span class="note">1N · Central, easy parking</span>
+                  <span class="name">La Vista Furano Hills</span>
+                  <span class="note">1N · Central Furano</span>
                 </td>
                 <td class="col-plan">
-                  Relaxed departure from Chitose after breakfast.<br/>
-                  Afternoon: Check‑in at Furano, short stroll around town, café time; early night for next day’s Biei/Blue Pond loop.
+                  Arrive Furano mid‑afternoon, check‑in. Evening: Explore Furano town; optionally visit Ningle Terrace or a local winery/café.
                 </td>
               </tr>
 
@@ -785,16 +903,15 @@
                 <td class="col-date">23 Nov (Mon)</td>
                 <td class="col-base">Asahikawa</td>
                 <td class="col-transport">
-                  Drive Furano → Biei → Shirogane / Blue Pond → Asahikawa (loop ~2.5–3 h driving + sightseeing).
+                  Drive Furano → Biei → Blue Pond & Shirahige Falls → Asahikawa (loop ~2.5–3 h driving + sightseeing).
                   <div class="pill drive">🚗 Scenic loop</div>
                 </td>
                 <td class="col-hotel">
                   <span class="name">Hotel Amanek Asahikawa</span>
-                  <span class="note">2N · Near station & shopping</span>
+                  <span class="note">Night 1 of 3 · Near Asahikawa Station</span>
                 </td>
                 <td class="col-plan">
-                  Morning: Drive Furano → Biei Patchwork Road area, then Blue Pond & Shirahige Falls (snow‑edge scenery).<br/>
-                  Afternoon: Continue to Asahikawa, check‑in and dinner around station.
+                  Scenic Biei fields, Blue Pond, Shirahige Falls. Drive on to Asahikawa, check‑in, and dinner around station.
                 </td>
               </tr>
 
@@ -803,16 +920,15 @@
                 <td class="col-date">24 Nov (Tue)</td>
                 <td class="col-base">Asahikawa</td>
                 <td class="col-transport">
-                  Short city drive / local bus to zoo; minimal driving.
+                  Short city drive / local bus to Asahiyama Zoo.
                   <div class="pill drive">🚗 Light driving</div>
                 </td>
                 <td class="col-hotel">
                   <span class="name">Hotel Amanek Asahikawa</span>
-                  <span class="note">2nd night</span>
+                  <span class="note">Night 2 of 3</span>
                 </td>
                 <td class="col-plan">
-                  <strong>Asahiyama Zoo day.</strong><br/>
-                  Easy breakfast, visit zoo late morning to afternoon; free and easy shopping near Asahikawa station in evening.
+                  Asahiyama Zoo late morning to afternoon, then ramen and shopping in Asahikawa city.
                   <div class="pill-highlight">🐧 Asahiyama Zoo highlight</div>
                 </td>
               </tr>
@@ -820,20 +936,17 @@
               <!-- 25 Nov -->
               <tr>
                 <td class="col-date">25 Nov (Wed)</td>
-                <td class="col-base">Sapporo</td>
+                <td class="col-base">Asahikawa</td>
                 <td class="col-transport">
-                  Drive Asahikawa → Mitsui Outlet Park Sapporo Kitahiroshima (~2 h). Outlet → Sapporo city → return car at Sapporo Ekimae ~17:00.
-                  <div class="pill drive">🚗 Final drive</div>
-                  <div class="pill shopping">🛍 Mitsui Outlet before return</div>
+                  Flexible local driving day around Asahikawa (short scenic drives, malls, local onsen).
+                  <div class="pill drive">🚗 Flexible drive</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Gracery Sapporo</span>
-                  <span class="note">5N total (25–26 & 29–1) · Near JR Sapporo</span>
+                  <span class="name">Hotel Amanek Asahikawa</span>
+                  <span class="note">Night 3 of 3</span>
                 </td>
                 <td class="col-plan">
-                  Morning: Depart Asahikawa after breakfast, drive to Mitsui Outlet (shopping & lunch).<br/>
-                  Afternoon: Head into Sapporo, return car at Sapporo Ekimae by 17:00, check‑in at Hotel Gracery.
-                  <div class="pill-highlight">🚗 Car return day</div>
+                  Buffer day: adjust plans based on weather and energy—short outings near Asahikawa rather than long drives.
                 </td>
               </tr>
 
@@ -842,16 +955,18 @@
                 <td class="col-date">26 Nov (Thu)</td>
                 <td class="col-base">Sapporo</td>
                 <td class="col-transport">
-                  On foot / subway.
-                  <div class="pill">🚶 Car‑free city</div>
+                  Drive Asahikawa → Sapporo, optional stop at Mitsui Outlet Park Sapporo Kitahiroshima on the way (~2 h total driving).
+                  <div class="pill drive">🚗 Final drive (Day 8/8)</div>
+                  <div class="pill shopping">🛍 Optional outlet stop</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Gracery Sapporo</span>
-                  <span class="note">2nd night (pre‑Otaru)</span>
+                  <span class="name">Tokyu Stay Sapporo Odori</span>
+                  <span class="note">1N · Near Odori Park</span>
                 </td>
                 <td class="col-plan">
-                  Sapporo city highlights: Odori Park, Clock Tower, Former Hokkaido Government Building, Tanukikoji shopping street.
-                  Optional night view from Mt Moiwa ropeway.
+                  Morning departure from Asahikawa, outlet shopping + lunch if desired, then drive into Sapporo.
+                  Return rental car in Sapporo before check‑in at Tokyu Stay; evening walk around Odori / Tanukikoji.
+                  <div class="pill-highlight">🚗 Car return day</div>
                 </td>
               </tr>
 
@@ -860,17 +975,15 @@
                 <td class="col-date">27 Nov (Fri)</td>
                 <td class="col-base">Otaru</td>
                 <td class="col-transport">
-                  JR train Sapporo → Otaru (~45 min, frequent departures).
+                  JR Sapporo → Otaru (~45 min, frequent departures).
                   <div class="pill train">🚆 JR to Otaru</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Nord Otaru</span>
-                  <span class="note">2N · Near Otaru Canal</span>
+                  <span class="name">Hotel Torifito Otaru Canal</span>
+                  <span class="note">Night 1 of 2 · Near canal</span>
                 </td>
                 <td class="col-plan">
-                  Morning: JR to Otaru, drop bags at hotel.<br/>
-                  Day: Otaru Canal, Sakaimachi Street, glass and music box shops, fresh sushi.
-                  Evening canal night view.
+                  Check‑in near canal. Walk Otaru Canal and Sakaimachi Street, visit Music Box Museum and glass shops, sushi dinner, night canal view.
                 </td>
               </tr>
 
@@ -879,15 +992,15 @@
                 <td class="col-date">28 Nov (Sat)</td>
                 <td class="col-base">Otaru</td>
                 <td class="col-transport">
-                  Local walking / short bus or taxi if needed.
+                  Walking / short local transfers.
                   <div class="pill">🚶 Explore at leisure</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Nord Otaru</span>
-                  <span class="note">2nd night</span>
+                  <span class="name">Hotel Torifito Otaru Canal</span>
+                  <span class="note">Night 2 of 2</span>
                 </td>
                 <td class="col-plan">
-                  Flexible second day in Otaru: more Sakaimachi Street, LeTAO desserts, possible side visit to Otaru Tenguyama or aquarium (weather‑dependent).
+                  Second Otaru day: more Sakaimachi and dessert cafés (LeTAO), optional Tenguyama ropeway or aquarium depending on weather.
                 </td>
               </tr>
 
@@ -896,15 +1009,15 @@
                 <td class="col-date">29 Nov (Sun)</td>
                 <td class="col-base">Sapporo</td>
                 <td class="col-transport">
-                  JR train Otaru → Sapporo (~45 min).
+                  JR Otaru → Sapporo (~45 min).
                   <div class="pill train">🚆 Back to Sapporo</div>
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Gracery Sapporo</span>
-                  <span class="note">Night 3 of 5</span>
+                  <span class="name">41 Pieces Sapporo</span>
+                  <span class="note">Night 1 of 3</span>
                 </td>
                 <td class="col-plan">
-                  Return to Sapporo, free & easy: Daimaru / Stellar Place / Esta shopping, underground walkway exploration, ramen alley dinner.
+                  Check‑in at 41 Pieces, shopping around Sapporo Station and underground malls, relaxed dinner.
                 </td>
               </tr>
 
@@ -913,18 +1026,14 @@
                 <td class="col-date">30 Nov (Mon)</td>
                 <td class="col-base">Sapporo</td>
                 <td class="col-transport">
-                  Local transport (subway / bus).
-                  <div class="pill">🚶 City & nearby</div>
+                  Subway / walking.
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Gracery Sapporo</span>
-                  <span class="note">Night 4 of 5</span>
+                  <span class="name">41 Pieces Sapporo</span>
+                  <span class="note">Night 2 of 3</span>
                 </td>
                 <td class="col-plan">
-                  Optional day trip ideas: <br/>
-                  • Sapporo Beer Museum & factory<br/>
-                  • Shiroi Koibito Park<br/>
-                  • Local parks if snow has started.
+                  Sapporo city sightseeing: Odori Park, Former Hokkaido Government Building, Sapporo Beer Museum or Shiroi Koibito Park depending on preference.
                 </td>
               </tr>
 
@@ -933,15 +1042,14 @@
                 <td class="col-date">1 Dec (Tue)</td>
                 <td class="col-base">Sapporo</td>
                 <td class="col-transport">
-                  Mainly walking / subway.
+                  Mostly walking / subway.
                 </td>
                 <td class="col-hotel">
-                  <span class="name">Hotel Gracery Sapporo</span>
-                  <span class="note">Final night in Sapporo</span>
+                  <span class="name">41 Pieces Sapporo</span>
+                  <span class="note">Night 3 of 3</span>
                 </td>
                 <td class="col-plan">
-                  Last shopping and food day in Sapporo (souvenirs, Uniqlo, Don Quijote, etc.).<br/>
-                  Pack luggage, early night for next‑day flight.
+                  Final full day for shopping (Tanukikoji, Don Quijote, Uniqlo, souvenirs), packing and early night before flight.
                 </td>
               </tr>
 
@@ -950,17 +1058,16 @@
                 <td class="col-date">2 Dec (Wed)</td>
                 <td class="col-base">Return to Singapore</td>
                 <td class="col-transport">
-                  JR Sapporo → New Chitose Airport (~40 min). Aim to reach airport ~7:00 for 9:30 flight.
+                  JR Sapporo → New Chitose Airport (~40 min). Aim to reach airport around 07:00 for 09:30 flight.
                   <div class="pill train">🚆 Airport train</div>
                   <div class="pill">✈️ SQ661 CTS→SIN 09:30–17:05</div>
                 </td>
                 <td class="col-hotel">
                   <span class="name">—</span>
-                  <span class="note">Check‑out Hotel Gracery Sapporo</span>
+                  <span class="note">Check‑out 41 Pieces Sapporo</span>
                 </td>
                 <td class="col-plan">
-                  Early check‑out, JR to New Chitose Airport, check‑in for SQ661 (09:30 departure, ETA Singapore 17:05).<br/>
-                  Last‑minute airport shopping and snacks before boarding.
+                  Early check‑out, JR to CTS, flight SQ661 09:30 → 17:05 back to Singapore. Last‑minute airport shopping and snacks.
                 </td>
               </tr>
             </tbody>
@@ -969,98 +1076,132 @@
       </article>
 
       <!-- SIDEBAR: TRIP INFO -->
-      <aside class="card">
+      <aside class="card" id="sidebar">
         <header class="card-header">
           <div>
             <div class="card-title">Trip Info & Notes</div>
-            <div class="card-sub">Key details at a glance for planning and sharing.</div>
+            <div class="card-sub">Hotels, car rental, and budget updated to your latest plan.</div>
           </div>
         </header>
 
-        <div class="info-section">
-          <div class="info-title">Travel Party</div>
+        <div class="info-section" id="hotels">
+          <div class="info-title">Travel Party & Hotels</div>
           <div class="info-body">
-            <strong>3 travelers:</strong> you (53), wife (50), daughter (15). [cite:18]<br/>
-            Focus on warm stays, manageable drives, and enough free time for shopping and rest.
+            <strong>3 travelers:</strong> you, your wife, and your daughter (teen).<br/>
+            Focus on warm, comfortable hotels, manageable drive times, and plenty of free time.
             <div class="chips">
               <span class="chip chip-strong">Family‑friendly pacing</span>
-              <span class="chip">Onsen + outlets</span>
+              <span class="chip">Onsen + city shopping</span>
               <span class="chip">Late‑Nov light snow</span>
             </div>
+            <p class="note" style="margin-top:0.4rem;">
+              <span>Key stays:</span> Hotel Global View Hakodate · Toyako Manseikaku · Daiichi Takimotokan · Chitose (TBC) · La Vista Furano Hills · Hotel Amanek Asahikawa (3N) · Tokyu Stay Sapporo Odori · Hotel Torifito Otaru Canal (2N) · 41 Pieces Sapporo (3N).
+            </p>
           </div>
         </div>
 
         <div class="info-section">
-          <div class="info-title">Car Rental (Core)</div>
+          <div class="info-title">Car Rental</div>
           <div class="info-body">
-            <strong>Period:</strong> 19 Nov (Thu) 10:00 – 25 Nov (Wed) 17:00. [cite:11]<br/>
-            <strong>Route:</strong> Hakodate → Toya → Noboribetsu → Lake Shikotsu (R453) → Chitose → Furano → Biei/Blue Pond → Asahikawa → Mitsui Outlet → Sapporo (return). [cite:15][cite:16]<br/>
+            <strong>Period:</strong> 19 Nov (Thu) – 26 Nov (Thu), ~8 days.<br/>
+            <strong>Route:</strong> Hakodate → Lake Toya → Noboribetsu → Lake Shikotsu (R453) → Chitose → Furano → Biei / Blue Pond → Asahikawa → Sapporo (return).<br/>
             <div class="chips">
               <span class="chip">Studless winter tyres</span>
               <span class="chip">One‑way rental</span>
-              <span class="chip">Outlet before return</span>
+              <span class="chip">Outlet stop optional</span>
             </div>
             <p class="note">
-              <span>Tip:</span> Allow extra time for snow or icy conditions in late November, especially around Furano/Biei and morning drives.
+              <span>Tip:</span> Keep departure times flexible on potential snow days (Furano/Biei/Asahikawa) and prioritise daytime driving.
             </p>
           </div>
         </div>
 
-        <div class="info-section">
-          <div class="info-title">Budget Overview (Est.)</div>
+        <div class="info-section" id="budget">
+          <div class="info-title">Budget Overview</div>
           <div class="info-body">
             <div class="budget-row">
-              <span>Hotels (15 nights)</span>
-              <strong>~SGD 5,100</strong>
+              <span>Hotels (15 nights, est.)</span>
+              <strong>~SGD 4,100</strong>
             </div>
             <div class="budget-row">
-              <span>Car + fuel + tolls</span>
-              <strong>~SGD 1,000</strong>
-            </div>
-            <div class="budget-row">
-              <span>Food & cafés</span>
+              <span>Car + fuel + tolls (~8 days)</span>
               <strong>~SGD 1,200</strong>
             </div>
             <div class="budget-row">
-              <span>Sightseeing & misc.</span>
-              <strong>~SGD 600</strong>
+              <span>Food & cafés</span>
+              <strong>~SGD 1,400</strong>
             </div>
             <div class="budget-row">
-              <span>Total planned (excl. flights)</span>
-              <strong>~SGD 7,900</strong>
+              <span>JR / subway</span>
+              <strong>~SGD 150</strong>
+            </div>
+            <div class="budget-row">
+              <span>Sightseeing & activities</span>
+              <strong>~SGD 500</strong>
+            </div>
+            <div class="budget-row">
+              <span>Shopping & misc.</span>
+              <strong>~SGD 900</strong>
+            </div>
+            <div class="budget-row">
+              <span><strong>Total (est., excl. flights)</strong></span>
+              <strong>~SGD 8,300</strong>
             </div>
             <p class="note">
-              Based on mid‑range hotels (JR Inn, Amanek, Nord Otaru, Gracery Sapporo) and some onsen ryokan nights. [cite:17]
+              Swap in your actual hotel and car quotes to refine this estimate; structure is ready for Excel tracking.
             </p>
           </div>
         </div>
 
         <div class="info-section">
-          <div class="info-title">Highlights to Look Forward To</div>
+          <div class="info-title">Highlights</div>
           <div class="info-body">
             <ul style="list-style:none; padding-left:0; margin:0; font-size:0.78rem;">
-              <li>• Night views at Hakodate & Otaru Canal.</li>
-              <li>• Lake Toya and Noboribetsu onsen experiences.</li>
-              <li>• Blue Pond & Shirahige Falls with early winter feel.</li>
-              <li>• Asahiyama Zoo penguins and animals.</li>
-              <li>• Mitsui Outlet & Sapporo / Otaru shopping and food.</li>
+              <li>• Hakodate night view, Morning Market & Goryokaku.</li>
+              <li>• Lake Toya and Noboribetsu onsen stays.</li>
+              <li>• Route 453 via Lake Shikotsu, Furano & Biei’s Blue Pond.</li>
+              <li>• 3 nights in Asahikawa with Asahiyama Zoo and ramen.</li>
+              <li>• Otaru Canal, 41 Pieces Sapporo, and city shopping days.</li>
             </ul>
             <div class="highlight-callout">
-              Hokkaido loop is optimized to minimise backtracking while hitting
-              <strong>scenic drives, onsen towns, outlets and city highlights</strong> within your 16‑day window. [cite:16][cite:18]
+              Route is tuned to minimise backtracking while hitting <strong>scenic drives, onsen towns, Otaru, and Sapporo highlights</strong> within your 16‑day window.
             </div>
           </div>
         </div>
 
         <div class="info-section">
-          <div class="info-title">Sharing & Editing</div>
+          <div class="info-title">Editing & Sharing</div>
           <div class="info-body">
-            Save this file as <strong>hokkaido_trip_nov2026.html</strong> and open in any browser.<br/>
-            You can share it via email, Google Drive, or host it on GitHub Pages / Netlify for a public link. [cite:12][cite:14]
+            Open this file in <strong>Visual Studio Code</strong> to tweak text, dates or budget, then commit/upload to GitHub to update your GitHub Pages site.<br/>
+            Share your link at <strong>https://nkhean.github.io/hokkaido-trip-2026/</strong> with family for easy viewing.
           </div>
         </div>
       </aside>
     </section>
   </div>
+
+  <script>
+    // Smooth scrolling for mobile nav buttons
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.nav-btn');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetSelector = btn.getAttribute('data-target');
+          const target = document.querySelector(targetSelector);
+          if (!target) return;
+
+          const rect = target.getBoundingClientRect();
+          const offset = window.pageYOffset || document.documentElement.scrollTop;
+          const top = rect.top + offset - 70; // adjust for sticky nav
+
+          window.scrollTo({
+            top,
+            behavior: 'smooth'
+          });
+        }, { passive: true });
+      });
+    });
+  </script>
 </body>
 </html>
