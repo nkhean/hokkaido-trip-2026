@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hokkaido Family Trip – 17 Nov to 2 Dec 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0f172a;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.12);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --danger: #f97373;
+      --success: #22c55e;
+      --warn: #eab308;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto 3rem auto;
+    }
+
+    /* Header */
+    .hero {
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.32), transparent 60%),
+                  linear-gradient(135deg, #020617 0%, #020617 40%, #0b1120 100%);
+      border-radius: 1.5rem;
+      padding: 1.75rem 1.75rem 1.6rem;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow:
+        0 35px 120px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(56,189,248,0.18), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      max-width: 60%;
+      min-width: 260px;
+    }
+
+    .trip-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .trip-kicker span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.28);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #f9fafb;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .badge span.icon {
+      font-size: 0.9rem;
+    }
+
+    .badge-primary {
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.28), rgba(15,23,42,0.98));
+      border-color: rgba(56,189,248,0.7);
+      color: #e5e7eb;
+    }
+
+    .hero-side {
+      min-width: 220px;
+      max-width: 260px;
+      background: rgba(15,23,42,0.96);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 0.9rem 1rem 0.8rem;
+      box-shadow: 0 18px 55px rgba(15,23,42,0.9);
+      position: relative;
+    }
+
+    .hero-side::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at -10% -20%, rgba(56,189,248,0.5), transparent 50%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-side-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-side-header h3 {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-side-header span {
+      font-size: 0.8rem;
+      color: var(--accent-strong);
+    }
+
+    .hero-side-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-trip-dates {
+      font-size: 0.9rem;
+      margin-bottom: 0.1rem;
+      color: #e5e7eb;
+    }
+
+    .hero-trip-days {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-trip-days strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-route-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-route-tags span {
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--muted);
+      background: rgba(15,23,42,0.93);
+    }
+
+    .hero-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-meta-row strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-footer-note {
+      margin-top: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* Print button */
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1.1rem 0 0.4rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.95);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, border-color 0.1s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      border-color: rgba(56,189,248,0.8);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.8);
+      background: rgba(15,23,42,0.98);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #38bdf8, #4ade80);
+      box-shadow: 0 12px 30px rgba(56,189,248,0.6);
+    }
+
+    .btn span.icon {
+      font-size: 0.95rem;
+    }
+
+    /* Layout grids */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      margin-top: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      border-radius: 1.1rem;
+      border: 1px solid rgba(15,23,42,0.9);
+      box-shadow:
+        0 24px 80px rgba(15,23,42,0.9),
+        0 0 0 1px rgba(15,23,42,0.85);
+      padding: 1.1rem 1.1rem 1.0rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card-title strong {
+      color: #e5e7eb;
+    }
+
+    .card-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Itinerary table */
+    .table-wrapper {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(31,41,55,0.85);
+      overflow: hidden;
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(15,23,42,1));
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    thead {
+      background: linear-gradient(90deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+    }
+
+    th, td {
+      padding: 0.55rem 0.6rem;
+      border-bottom: 1px solid rgba(31,41,55,0.85);
+      vertical-align: top;
+    }
+
+    th {
+      text-align: left;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(51,65,85,0.9);
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(15,23,42,0.96);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15,23,42,0.98);
+    }
+
+    tbody tr:hover {
+      background: rgba(30,64,175,0.45);
+    }
+
+    .col-date {
+      white-space: nowrap;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .col-base {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .col-transport {
+      color: var(--muted);
+    }
+
+    .col-hotel span.name {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .col-hotel span.note {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .col-plan strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      margin-right: 0.15rem;
+    }
+
+    .pill.drive {
+      border-color: rgba(56,189,248,0.85);
+      color: #bae6fd;
+    }
+
+    .pill.train {
+      border-color: rgba(74,222,128,0.85);
+      color: #bbf7d0;
+    }
+
+    .pill.onset {
+      border-color: rgba(250,204,21,0.85);
+      color: #facc15;
+    }
+
+    .pill.shopping {
+      border-color: rgba(248,250,252,0.7);
+      color: #e5e7eb;
+    }
+
+    .pill-highlight {
+      background: rgba(251,191,36,0.12);
+      border-color: rgba(251,191,36,0.8);
+      color: #facc15;
+      font-weight: 500;
+    }
+
+    /* Sidebar sections */
+    .info-section {
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed rgba(51,65,85,0.9);
+    }
+
+    .info-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .info-body {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .info-body strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.25rem;
+    }
+
+    .chip {
+      font-size: 0.72rem;
+      padding: 0.16rem 0.48rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--muted);
+      background: rgba(15,23,42,0.96);
+    }
+
+    .chip-strong {
+      border-color: rgba(56,189,248,0.8);
+      color: #e5e7eb;
+    }
+
+    .budget-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      margin-bottom: 0.18rem;
+      color: var(--muted);
+    }
+
+    .budget-row strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .note span {
+      color: #e5e7eb;
+    }
+
+    .highlight-callout {
+      margin-top: 0.4rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.6rem;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), rgba(15,23,42,1));
+      border: 1px solid rgba(56,189,248,0.6);
+      font-size: 0.75rem;
+      color: #e5e7eb;
+    }
+
+    .highlight-callout strong {
+      color: #facc15;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 0.9rem;
+      }
+      .hero {
+        padding: 1.3rem 1.1rem 1.1rem;
+      }
+      .hero-main {
+        max-width: 100%;
+      }
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-side {
+        max-width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      .hero, .card, .table-wrapper {
+        box-shadow: none;
+      }
+      .btn, .toolbar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-top">
+        <div class="hero-main">
+          <div class="trip-kicker">
+            <span class="dot"></span>
+            <span>Family Self‑Drive · Hokkaido 2026</span>
+          </div>
+          <h1 class="hero-title">Hokkaido Family Trip · 17 Nov – 2 Dec 2026</h1>
+          <p class="hero-sub">
+            3‑pax family trip (age 53, 50, 15) covering
+            <strong>Hakodate → Lake Toya → Noboribetsu → Chitose → Furano → Asahikawa → Mitsui Outlet → Sapporo → Otaru → Sapporo</strong>
+            with a one‑way self‑drive core and car‑free city days. [Itinerary based on planning notes]
+          </p>
+          <div class="hero-badges">
+            <div class="badge badge-primary">
+              <span class="icon">✈️</span>
+              <span>Flights: SIN ⇄ HKD / CTS · NH + SQ661 (CTS→SIN 09:30–17:05)</span>
+            </div>
+            <div class="badge">
+              <span class="icon">🚗</span>
+              <span>Car: 19–25 Nov · Hakodate Ekimae → Sapporo Ekimae · ¥86,052 (est.)</span>
+            </div>
+            <div class="badge">
+              <span class="icon">🧮</span>
+              <span>Planned budget: ~SGD 7,900 for 3 pax</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-side-header">
+            <h3>Trip Snapshot</h3>
+            <span>2026 · Winter Edge</span>
+          </div>
+          <div class="hero-side-main">
+            <div class="hero-trip-dates">17 Nov (Tue) – 2 Dec (Wed) 2026</div>
+            <div class="hero-trip-days"><strong>16 days / 15 nights</strong> · 3 travelers</div>
+            <div class="hero-route-tags">
+              <span>Hakodate</span>
+              <span>Lake Toya</span>
+              <span>Noboribetsu</span>
+              <span>Furano</span>
+              <span>Asahikawa</span>
+              <span>Sapporo</span>
+              <span>Otaru</span>
+            </div>
+            <div class="hero-meta-row">
+              <span>Driving days</span>
+              <span><strong>7D self‑drive (19–25 Nov)</strong></span>
+            </div>
+            <div class="hero-meta-row">
+              <span>Trip style</span>
+              <span>Scenic routes + onsen + outlets</span>
+            </div>
+            <p class="hero-footer-note">
+              Designed for easy navigation, built‑in snow buffer and
+              relaxed pacing for a family of three.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <button class="btn btn-primary" onclick="window.print()">
+        <span class="icon">🖨️</span>
+        <span>Print Itinerary</span>
+      </button>
+    </div>
+
+    <!-- LAYOUT -->
+    <section class="layout">
+      <!-- MAIN: ITINERARY TABLE -->
+      <article class="card">
+        <header class="card-header">
+          <div>
+            <div class="card-title"><strong>Daily Itinerary</strong> · 17 Nov – 2 Dec 2026</div>
+            <div class="card-sub">Includes hotel, transport, drive time and main plan for each day.</div>
+          </div>
+        </header>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Date / Day</th>
+                <th>Base / Overnight</th>
+                <th>Transport / Driving</th>
+                <th>Hotel</th>
+                <th>Main plan & notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 17 Nov -->
+              <tr>
+                <td class="col-date">17 Nov (Tue)</td>
+                <td class="col-base">Hakodate</td>
+                <td class="col-transport">
+                  Arrive HKD 18:15 (NH557 from HND 16:55). Airport taxi ~30 min to city.
+                  <div class="pill">✈️ Arrival Day</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">JR Inn Hakodate</span>
+                  <span class="note">2N total · Station‑side business hotel · Good value</span>
+                </td>
+                <td class="col-plan">
+                  <strong>Evening: Bay area warm‑up</strong><br/>
+                  Check‑in, short bay area walk, seafood dinner near Kanemori Red Brick Warehouses.
+                </td>
+              </tr>
+
+              <!-- 18 Nov -->
+              <tr>
+                <td class="col-date">18 Nov (Wed)</td>
+                <td class="col-base">Hakodate</td>
+                <td class="col-transport">
+                  Local tram / bus and walking.
+                  <div class="pill">🚶 City explore</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">JR Inn Hakodate</span>
+                  <span class="note">Second night</span>
+                </td>
+                <td class="col-plan">
+                  Morning Market breakfast, Motomachi & churches, afternoon rest.
+                  <strong>Evening:</strong> Mt Hakodate ropeway for night view (weather‑dependent).
+                </td>
+              </tr>
+
+              <!-- 19 Nov -->
+              <tr>
+                <td class="col-date">19 Nov (Thu)</td>
+                <td class="col-base">Lake Toya</td>
+                <td class="col-transport">
+                  Pick up rental car 10:00 at Hakodate Ekimae. Drive to Lake Toya via scenic coastal route (~3–3.5 h normal; allow ~4 h with stops).
+                  <div class="pill drive">🚗 Start self‑drive</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Lake View Toya Nonokaze Resort</span>
+                  <span class="note">1N · Onsen ryokan with lake view</span>
+                </td>
+                <td class="col-plan">
+                  Check‑out Hakodate after breakfast, collect car, drive to Lake Toya with lunch en route.<br/>
+                  <strong>Afternoon / evening:</strong> Onsen, lakeside stroll, possible lake fireworks if scheduled.
+                  <div class="pill onset">♨ Onsen stay</div>
+                </td>
+              </tr>
+
+              <!-- 20 Nov -->
+              <tr>
+                <td class="col-date">20 Nov (Fri)</td>
+                <td class="col-base">Noboribetsu</td>
+                <td class="col-transport">
+                  Drive Lake Toya → Noboribetsu (~1 h). Short local driving around onsen town.
+                  <div class="pill drive">🚗 Scenic drive</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Noboribetsu Grand Hotel</span>
+                  <span class="note">1N · Classic onsen ryokan</span>
+                </td>
+                <td class="col-plan">
+                  Lake Toya morning stroll, then drive to Noboribetsu.
+                  Visit Jigokudani (Hell Valley) boardwalks, onsen street, evening kaiseki and hot spring.
+                  <div class="pill onset">♨ Onsen stay</div>
+                </td>
+              </tr>
+
+              <!-- 21 Nov -->
+              <tr>
+                <td class="col-date">21 Nov (Sat)</td>
+                <td class="col-base">Chitose</td>
+                <td class="col-transport">
+                  Scenic drive Noboribetsu → Lake Shikotsu via Route 453 → Chitose area (~2.5–3 h with stops).
+                  <div class="pill drive">🚗 Route 453 scenic</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">JR Inn Chitose</span>
+                  <span class="note">1N · Convenient for next‑day drive</span>
+                </td>
+                <td class="col-plan">
+                  Morning: Check out Noboribetsu, drive via Lake Shikotsu (Route 453) for lakeside scenery and lunch.<br/>
+                  Afternoon: Continue to Chitose / Minami‑Chitose, simple dinner near hotel.
+                </td>
+              </tr>
+
+              <!-- 22 Nov -->
+              <tr>
+                <td class="col-date">22 Nov (Sun)</td>
+                <td class="col-base">Furano</td>
+                <td class="col-transport">
+                  Drive Chitose → Furano (~2.5–3 h). Optional stop at rest area / viewpoint on the way.
+                  <div class="pill drive">🚗 Drive to Furano</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Furano Natulux Hotel</span>
+                  <span class="note">1N · Central, easy parking</span>
+                </td>
+                <td class="col-plan">
+                  Relaxed departure from Chitose after breakfast.<br/>
+                  Afternoon: Check‑in at Furano, short stroll around town, café time; early night for next day’s Biei/Blue Pond loop.
+                </td>
+              </tr>
+
+              <!-- 23 Nov -->
+              <tr>
+                <td class="col-date">23 Nov (Mon)</td>
+                <td class="col-base">Asahikawa</td>
+                <td class="col-transport">
+                  Drive Furano → Biei → Shirogane / Blue Pond → Asahikawa (loop ~2.5–3 h driving + sightseeing).
+                  <div class="pill drive">🚗 Scenic loop</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Amanek Asahikawa</span>
+                  <span class="note">2N · Near station & shopping</span>
+                </td>
+                <td class="col-plan">
+                  Morning: Drive Furano → Biei Patchwork Road area, then Blue Pond & Shirahige Falls (snow‑edge scenery).<br/>
+                  Afternoon: Continue to Asahikawa, check‑in and dinner around station.
+                </td>
+              </tr>
+
+              <!-- 24 Nov -->
+              <tr>
+                <td class="col-date">24 Nov (Tue)</td>
+                <td class="col-base">Asahikawa</td>
+                <td class="col-transport">
+                  Short city drive / local bus to zoo; minimal driving.
+                  <div class="pill drive">🚗 Light driving</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Amanek Asahikawa</span>
+                  <span class="note">2nd night</span>
+                </td>
+                <td class="col-plan">
+                  <strong>Asahiyama Zoo day.</strong><br/>
+                  Easy breakfast, visit zoo late morning to afternoon; free and easy shopping near Asahikawa station in evening.
+                  <div class="pill-highlight">🐧 Asahiyama Zoo highlight</div>
+                </td>
+              </tr>
+
+              <!-- 25 Nov -->
+              <tr>
+                <td class="col-date">25 Nov (Wed)</td>
+                <td class="col-base">Sapporo</td>
+                <td class="col-transport">
+                  Drive Asahikawa → Mitsui Outlet Park Sapporo Kitahiroshima (~2 h). Outlet → Sapporo city → return car at Sapporo Ekimae ~17:00.
+                  <div class="pill drive">🚗 Final drive</div>
+                  <div class="pill shopping">🛍 Mitsui Outlet before return</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Gracery Sapporo</span>
+                  <span class="note">5N total (25–26 & 29–1) · Near JR Sapporo</span>
+                </td>
+                <td class="col-plan">
+                  Morning: Depart Asahikawa after breakfast, drive to Mitsui Outlet (shopping & lunch).<br/>
+                  Afternoon: Head into Sapporo, return car at Sapporo Ekimae by 17:00, check‑in at Hotel Gracery.
+                  <div class="pill-highlight">🚗 Car return day</div>
+                </td>
+              </tr>
+
+              <!-- 26 Nov -->
+              <tr>
+                <td class="col-date">26 Nov (Thu)</td>
+                <td class="col-base">Sapporo</td>
+                <td class="col-transport">
+                  On foot / subway.
+                  <div class="pill">🚶 Car‑free city</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Gracery Sapporo</span>
+                  <span class="note">2nd night (pre‑Otaru)</span>
+                </td>
+                <td class="col-plan">
+                  Sapporo city highlights: Odori Park, Clock Tower, Former Hokkaido Government Building, Tanukikoji shopping street.
+                  Optional night view from Mt Moiwa ropeway.
+                </td>
+              </tr>
+
+              <!-- 27 Nov -->
+              <tr>
+                <td class="col-date">27 Nov (Fri)</td>
+                <td class="col-base">Otaru</td>
+                <td class="col-transport">
+                  JR train Sapporo → Otaru (~45 min, frequent departures).
+                  <div class="pill train">🚆 JR to Otaru</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Nord Otaru</span>
+                  <span class="note">2N · Near Otaru Canal</span>
+                </td>
+                <td class="col-plan">
+                  Morning: JR to Otaru, drop bags at hotel.<br/>
+                  Day: Otaru Canal, Sakaimachi Street, glass and music box shops, fresh sushi.
+                  Evening canal night view.
+                </td>
+              </tr>
+
+              <!-- 28 Nov -->
+              <tr>
+                <td class="col-date">28 Nov (Sat)</td>
+                <td class="col-base">Otaru</td>
+                <td class="col-transport">
+                  Local walking / short bus or taxi if needed.
+                  <div class="pill">🚶 Explore at leisure</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Nord Otaru</span>
+                  <span class="note">2nd night</span>
+                </td>
+                <td class="col-plan">
+                  Flexible second day in Otaru: more Sakaimachi Street, LeTAO desserts, possible side visit to Otaru Tenguyama or aquarium (weather‑dependent).
+                </td>
+              </tr>
+
+              <!-- 29 Nov -->
+              <tr>
+                <td class="col-date">29 Nov (Sun)</td>
+                <td class="col-base">Sapporo</td>
+                <td class="col-transport">
+                  JR train Otaru → Sapporo (~45 min).
+                  <div class="pill train">🚆 Back to Sapporo</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Gracery Sapporo</span>
+                  <span class="note">Night 3 of 5</span>
+                </td>
+                <td class="col-plan">
+                  Return to Sapporo, free & easy: Daimaru / Stellar Place / Esta shopping, underground walkway exploration, ramen alley dinner.
+                </td>
+              </tr>
+
+              <!-- 30 Nov -->
+              <tr>
+                <td class="col-date">30 Nov (Mon)</td>
+                <td class="col-base">Sapporo</td>
+                <td class="col-transport">
+                  Local transport (subway / bus).
+                  <div class="pill">🚶 City & nearby</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Gracery Sapporo</span>
+                  <span class="note">Night 4 of 5</span>
+                </td>
+                <td class="col-plan">
+                  Optional day trip ideas: <br/>
+                  • Sapporo Beer Museum & factory<br/>
+                  • Shiroi Koibito Park<br/>
+                  • Local parks if snow has started.
+                </td>
+              </tr>
+
+              <!-- 1 Dec -->
+              <tr>
+                <td class="col-date">1 Dec (Tue)</td>
+                <td class="col-base">Sapporo</td>
+                <td class="col-transport">
+                  Mainly walking / subway.
+                </td>
+                <td class="col-hotel">
+                  <span class="name">Hotel Gracery Sapporo</span>
+                  <span class="note">Final night in Sapporo</span>
+                </td>
+                <td class="col-plan">
+                  Last shopping and food day in Sapporo (souvenirs, Uniqlo, Don Quijote, etc.).<br/>
+                  Pack luggage, early night for next‑day flight.
+                </td>
+              </tr>
+
+              <!-- 2 Dec -->
+              <tr>
+                <td class="col-date">2 Dec (Wed)</td>
+                <td class="col-base">Return to Singapore</td>
+                <td class="col-transport">
+                  JR Sapporo → New Chitose Airport (~40 min). Aim to reach airport ~7:00 for 9:30 flight.
+                  <div class="pill train">🚆 Airport train</div>
+                  <div class="pill">✈️ SQ661 CTS→SIN 09:30–17:05</div>
+                </td>
+                <td class="col-hotel">
+                  <span class="name">—</span>
+                  <span class="note">Check‑out Hotel Gracery Sapporo</span>
+                </td>
+                <td class="col-plan">
+                  Early check‑out, JR to New Chitose Airport, check‑in for SQ661 (09:30 departure, ETA Singapore 17:05).<br/>
+                  Last‑minute airport shopping and snacks before boarding.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- SIDEBAR: TRIP INFO -->
+      <aside class="card">
+        <header class="card-header">
+          <div>
+            <div class="card-title">Trip Info & Notes</div>
+            <div class="card-sub">Key details at a glance for planning and sharing.</div>
+          </div>
+        </header>
+
+        <div class="info-section">
+          <div class="info-title">Travel Party</div>
+          <div class="info-body">
+            <strong>3 travelers:</strong> you (53), wife (50), daughter (15). [cite:18]<br/>
+            Focus on warm stays, manageable drives, and enough free time for shopping and rest.
+            <div class="chips">
+              <span class="chip chip-strong">Family‑friendly pacing</span>
+              <span class="chip">Onsen + outlets</span>
+              <span class="chip">Late‑Nov light snow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-title">Car Rental (Core)</div>
+          <div class="info-body">
+            <strong>Period:</strong> 19 Nov (Thu) 10:00 – 25 Nov (Wed) 17:00. [cite:11]<br/>
+            <strong>Route:</strong> Hakodate → Toya → Noboribetsu → Lake Shikotsu (R453) → Chitose → Furano → Biei/Blue Pond → Asahikawa → Mitsui Outlet → Sapporo (return). [cite:15][cite:16]<br/>
+            <div class="chips">
+              <span class="chip">Studless winter tyres</span>
+              <span class="chip">One‑way rental</span>
+              <span class="chip">Outlet before return</span>
+            </div>
+            <p class="note">
+              <span>Tip:</span> Allow extra time for snow or icy conditions in late November, especially around Furano/Biei and morning drives.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-title">Budget Overview (Est.)</div>
+          <div class="info-body">
+            <div class="budget-row">
+              <span>Hotels (15 nights)</span>
+              <strong>~SGD 5,100</strong>
+            </div>
+            <div class="budget-row">
+              <span>Car + fuel + tolls</span>
+              <strong>~SGD 1,000</strong>
+            </div>
+            <div class="budget-row">
+              <span>Food & cafés</span>
+              <strong>~SGD 1,200</strong>
+            </div>
+            <div class="budget-row">
+              <span>Sightseeing & misc.</span>
+              <strong>~SGD 600</strong>
+            </div>
+            <div class="budget-row">
+              <span>Total planned (excl. flights)</span>
+              <strong>~SGD 7,900</strong>
+            </div>
+            <p class="note">
+              Based on mid‑range hotels (JR Inn, Amanek, Nord Otaru, Gracery Sapporo) and some onsen ryokan nights. [cite:17]
+            </p>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-title">Highlights to Look Forward To</div>
+          <div class="info-body">
+            <ul style="list-style:none; padding-left:0; margin:0; font-size:0.78rem;">
+              <li>• Night views at Hakodate & Otaru Canal.</li>
+              <li>• Lake Toya and Noboribetsu onsen experiences.</li>
+              <li>• Blue Pond & Shirahige Falls with early winter feel.</li>
+              <li>• Asahiyama Zoo penguins and animals.</li>
+              <li>• Mitsui Outlet & Sapporo / Otaru shopping and food.</li>
+            </ul>
+            <div class="highlight-callout">
+              Hokkaido loop is optimized to minimise backtracking while hitting
+              <strong>scenic drives, onsen towns, outlets and city highlights</strong> within your 16‑day window. [cite:16][cite:18]
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-title">Sharing & Editing</div>
+          <div class="info-body">
+            Save this file as <strong>hokkaido_trip_nov2026.html</strong> and open in any browser.<br/>
+            You can share it via email, Google Drive, or host it on GitHub Pages / Netlify for a public link. [cite:12][cite:14]
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+</body>
+</html>
