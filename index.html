@@ -594,6 +594,37 @@
       color: #facc15;
     }
 
+    /* Contact table */
+    .contact-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .contact-table th,
+    .contact-table td {
+      border: 1px solid rgba(31,41,55,0.85);
+      padding: 0.45rem 0.55rem;
+    }
+
+    .contact-table th {
+      background: rgba(15,23,42,0.98);
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact-table a[href^="tel:"] {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    .contact-table a[href^="tel:"]:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 720px) {
       body {
         padding: 0.75rem;
@@ -799,18 +830,18 @@
                 <td class="col-date" data-label="Date / Day">17 Nov (Tue)</td>
                 <td class="col-base" data-label="Base / Overnight">Hakodate</td>
                 <td class="col-transport" data-label="Transport / Driving">
-                Arrive HKD 18:15 (ANA from HND, connected from SIN). Airport taxi ~30 min to city.
-                <div class="pill">✈️ Arrival Day</div>
-              </td>
+                  Arrive HKD 18:15 (ANA from HND, connected from SIN). Airport taxi ~30 min to city.
+                  <div class="pill">✈️ Arrival Day</div>
+                </td>
                 <td class="col-hotel" data-label="Hotel">
-                <span class="name">Hotel Global View Hakodate</span>
-                <span class="note">2N · Breakfast included for 3</span>
-              </td>
-              <td class="col-plan" data-label="Main plan & notes">
-              Check‑in, short walk around station / bay area, seafood dinner nearby.
-              </td>
+                  <span class="name">Hotel Global View Hakodate</span>
+                  <span class="note">2N · Breakfast included for 3</span>
+                </td>
+                <td class="col-plan" data-label="Main plan & notes">
+                  Check‑in, short walk around station / bay area, seafood dinner nearby.
+                </td>
               </tr>
-            
+
               <!-- 18 Nov -->
               <tr>
                 <td class="col-date">18 Nov (Wed)</td>
@@ -946,7 +977,7 @@
                   <span class="note">Night 3 of 3</span>
                 </td>
                 <td class="col-plan">
-                  Buffer day: adjust plans based on weather and energy—short outings near Asahikawa rather than long drives.
+                  Shopping and easy buffer day: Heiwa-dori Shopping Park, AEON / Feeeal malls, café time, optional onsen in or near the city based on weather.
                 </td>
               </tr>
 
@@ -1096,6 +1127,94 @@
             </div>
             <p class="note" style="margin-top:0.4rem;">
               <span>Key stays:</span> Hotel Global View Hakodate · Toyako Manseikaku · Daiichi Takimotokan · Chitose (TBC) · La Vista Furano Hills · Hotel Amanek Asahikawa (3N) · Tokyu Stay Sapporo Odori · Hotel Torifito Otaru Canal (2N) · 41 Pieces Sapporo (3N).
+            </p>
+          </div>
+        </div>
+
+        <!-- NEW: HOTEL & SERVICE CONTACTS -->
+        <div class="info-section">
+          <div class="info-title">Hotel & Service Contacts</div>
+          <div class="info-body">
+            <table class="contact-table">
+              <thead>
+                <tr>
+                  <th>Location / Service</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Contact Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hakodate (Hotel)</td>
+                  <td>Hotel Global View Hakodate</td>
+                  <td>Omori-cho 25-3, Hakodate City</td>
+                  <td><a href="tel:+81138238585">+81-138-23-8585</a></td>
+                </tr>
+                <tr>
+                  <td>Hakodate (Car Pick-up)</td>
+                  <td>Nippon Rent-A-Car (Hakodate Station)</td>
+                  <td>22-5 Wakamatsucho, Hakodate City</td>
+                  <td><a href="tel:05017122983">050-1712-2983</a></td>
+                </tr>
+                <tr>
+                  <td>Lake Toya (Hotel)</td>
+                  <td>Toyako Manseikaku Hotel</td>
+                  <td>21 Toyako Onsen, Toyako-cho</td>
+                  <td><a href="tel:+81142733500">+81-142-73-3500</a></td>
+                </tr>
+                <tr>
+                  <td>Noboribetsu (Hotel)</td>
+                  <td>Daiichi Takimotokan</td>
+                  <td>Noboribetsu Onsen</td>
+                  <td><a href="tel:+81143842111">+81-143-84-2111</a></td>
+                </tr>
+                <tr>
+                  <td>Chitose (Hotel)</td>
+                  <td>JR Inn Chitose</td>
+                  <td>6-4-4 Suehiro, Chitose City</td>
+                  <td><a href="tel:+81123258357">+81-123-25-8357</a></td>
+                </tr>
+                <tr>
+                  <td>Furano (Hotel)</td>
+                  <td>La Vista Furano Hills</td>
+                  <td>5-14 Asahimachi, Furano</td>
+                  <td><a href="tel:+81167238666">+81-167-23-8666</a></td>
+                </tr>
+                <tr>
+                  <td>Asahikawa (Hotel)</td>
+                  <td>Hotel Amanek Asahikawa</td>
+                  <td>8-218, 1-jodori, Asahikawa</td>
+                  <td><a href="tel:+81166765430">+81-166-76-5430</a></td>
+                </tr>
+                <tr>
+                  <td>Sapporo (Hotel)</td>
+                  <td>Tokyu Stay Sapporo Odori</td>
+                  <td>26-2, Minami 2-jo Nishi 5-chome, Chuo Ward</td>
+                  <td><a href="tel:+81112003109">+81-11-200-3109</a></td>
+                </tr>
+                <tr>
+                  <td>Sapporo (Car Return)</td>
+                  <td>Nippon Rent-A-Car (Susukino)</td>
+                  <td>1F Anselige Bldg 2, Minami 8-jo Nishi 6-7-11, Chuo-ku</td>
+                  <td><a href="tel:05017122980">050-1712-2980</a></td>
+                </tr>
+                <tr>
+                  <td>Otaru (Hotel)</td>
+                  <td>Hotel Torifito Otaru Canal</td>
+                  <td>1-5-7 Ironai, Otaru</td>
+                  <td><a href="tel:+81134202200">+81-134-20-2200</a></td>
+                </tr>
+                <tr>
+                  <td>Sapporo (Hotel)</td>
+                  <td>41 Pieces Sapporo</td>
+                  <td>Minami 2-jo Nishi 5-chome 29-2, Chuo-ku</td>
+                  <td><a href="tel:+81112527042">+81-11-252-7042</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">
+              Tap any number on mobile to call directly (requires roaming or local SIM).
             </p>
           </div>
         </div>
